@@ -1,5 +1,3 @@
-// api/getWeatherSuggestion.js
-
 export default async function handler(req, res) {
     // This endpoint accepts only POST requests.
     if (req.method !== "POST") {
@@ -20,7 +18,7 @@ export default async function handler(req, res) {
     const siteURL = "https://riprayt.github.io/ai_samsa_weather"; 
     const siteTitle = "Samsa Weather";                         
   
-    // --- Re-create the determineClothing logic here ---
+    // --- determineClothing logic ---
     const temp = Math.round(weatherData.main.temp);
     const windSpeed = weatherData.wind.speed;
     const humidity = weatherData.main.humidity;
@@ -66,7 +64,7 @@ export default async function handler(req, res) {
     const clothingSuggestion = lang === "tr"
       ? `${clothingSuggestionTR} ${windAdviceTR}${humidityAdviceTR}`
       : `${clothingSuggestionEN} ${windAdviceEN}${humidityAdviceEN}`;
-    // --- End determineClothing logic ---
+
   
     // Prepare an object with the weather details.
     const extractedData = {
@@ -106,7 +104,7 @@ export default async function handler(req, res) {
     const systemPrompt = `
   You are a professional meteorologist providing accurate weather insights.
   Your goal is to deliver precise, concise, and expert-level weather analyses.
-  - Use professional meteorological language while keeping the explanation clear and simple.
+  - Use professional meteorological language while giving the explanation friendly and simple.
   - Give your response in the language ${lang}.
   - Your response should be 20-30 words long.
   Include:
