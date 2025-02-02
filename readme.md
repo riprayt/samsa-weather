@@ -21,9 +21,20 @@ Visit the live demo at: [samsaw.vercel.app](https://samsaw.vercel.app)
 ## Technologies Used
 
 ### Frontend
-- **Structure**: Used HTML and also Bootstrap classes for minimal CSS and a sleek look.
-- **Responsiveness**: Used Bootstrap classes to get responsive features like collapsing navbar and ordering divs.
-- **Modern Icons**: Used several 
+
+- **HTML & Bootstrap**:  
+  - The project uses HTML and Bootstrap classes for structure and styling.
+  - Responsive features (like collapsing navbar and flexible grid layouts) are built with Bootstrap.
+  
+- **JavaScript**:  
+  - Custom scripts (located in `assets/js/script.js` and `assets/js/script_tr.js`) handle weather data display and UI interactions.
+  - Modern icons are used to visually represent various weather conditions.
+
+- **Weather Icons**: Weather condition icons are provided by the [weather-icons repository](https://github.com/basmilius/weather-icons).
+
+- **Favicons**:  
+  Favicons for the project were generated using [RealFaviconGenerator](https://realfavicongenerator.net/).
+
 
 ### Backend & Serverless Functions
 
