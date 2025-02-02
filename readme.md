@@ -32,8 +32,7 @@ Visit the live demo at: [samsaw.vercel.app](https://samsaw.vercel.app)
 
 - **Weather Icons**: Weather condition icons are provided by the [weather-icons repository](https://github.com/basmilius/weather-icons).
 
-- **Favicons**:  
-  Favicons for the project were generated using [RealFaviconGenerator](https://realfavicongenerator.net/).
+- **Favicons**: Favicons for the project were generated using [RealFaviconGenerator](https://realfavicongenerator.net/).
 
 
 ### Backend & Serverless Functions
