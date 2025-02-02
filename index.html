@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <title>AI Samsa Weather</title>
+</head>
+
+<body>
+  <div class="container-fluid p-2 bg-dark text-opacity-75 text-light d-none d-lg-block">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-end">
+          <p class="my-auto"><a class="text-light text-opacity-75 text-decoration-none" href="https://github.com/riprayt/ai_samsa_weather"><small>Check this repo</small><i class="bi-github me-2 ms-2"></i></a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid bg-primary-weather sticky-top outernav">
+    <div class="container p-2">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand text-light" href="#">Samsa Weather</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+            <div class="collapse navbar-collapse mt-2 mt-lg-0" id="navbarSupportedContent">
+           <div class="d-flex align-items-center ms-auto">
+            <div class="d-flex me-2" >
+              <a href="index_tr.html" class="btn btn-light text-dark" style="width: 75px;">
+                🇹🇷TR
+              </a>
+            </div>
+              <div class="d-flex ms-auto w-40">
+              <input
+                class="form-control me-1"
+                list="city-list"
+                id="city-input"
+                type="search"
+                placeholder="Enter a city..."
+                aria-label="Search"
+              />
+              <button class="btn btn-secondary" type="button" id="search-btn">Search</button>
+            </div>
+            </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+
+  <div class="container-fluid bg-light border-bottom">
+    <div class="container overflow-auto">
+      <nav class="city-navbar navbar navbar-expand navbar-light">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#cityNav" aria-controls="cityNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="cityNav">
+          <ul class="navbar-nav"  id="city-list">
+            <li class="nav-item">
+              <a class="nav-link city-link"  data-city="Istanbul" >Istanbul</a>
+            </li>
+            <li class="nav-item d-flex align-items-center">
+              <span class="seperator">·</span>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link city-link"  data-city="Küçükçekmece" >Küçükçekmece</a>
+            </li>
+            <li class="nav-item d-flex align-items-center">
+              <span class="seperator">·</span>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link city-link"  data-city="Sarıyer" >Sarıyer</a>
+            </li>
+            <li class="nav-item d-flex align-items-center">
+              <span class="seperator">·</span>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link city-link"  data-city="Ankara" >Ankara</a>
+            </li>
+            <li class="nav-item d-flex align-items-center">
+              <span class="seperator">·</span>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link city-link"  data-city="İzmir" >İzmir</a>
+            </li>
+            <li class="nav-item d-flex align-items-center">
+              <span class="seperator">·</span>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link city-link"  data-city="Antalya" >Antalya</a>
+            </li>
+            <li class="nav-item d-flex align-items-center">
+              <span class="seperator">·</span>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link city-link"  data-city="London" >London</a>
+            </li><li class="nav-item d-flex align-items-center">
+              <span class="seperator">·</span>
+            </li> <li class="nav-item">
+        <a class="nav-link city-link"  data-city="Paris" >Paris</a>
+      </li>
+    </li><li class="nav-item d-flex align-items-center">
+      <span class="seperator">·</span>
+    </li>
+            <li class="nav-item">
+              <a class="nav-link city-link"  data-city="New York" >NewYork</a>
+            </li>
+          </li><li class="nav-item d-flex align-items-center">
+            <span class="seperator">·</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link city-link"  data-city="Seoul" >Seoul</a>
+          </li>
+        </li><li class="nav-item d-flex align-items-center">
+          <span class="seperator">·</span>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link city-link"  data-city="Beijing" >Beijing</a>
+        </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="container">
+
+      <div class="row d-flex mt-3 align-items-stretch">
+
+        <div class="container col-md-8">
+          <div class="row g-3 d-flex align-items-stretch">
+        
+          <div class="">
+            <div class="card text-white bg-primary h-100">
+              <div class="card-header bg-dark bg-opacity-75 text-white">
+                <h5 class="mb-0" id="weather-city">Gathering your city...</h5>
+              </div>
+              <div class="card-body d-flex align-items-center">
+                <div class="me-auto">
+                  <h1 class="display-1 fw-bold mb-0" id="weather-temperature">-°</h1>
+                  <p class="mb-2" id="weather-text">Loading...</p>
+                  <p class="mb-0 small small-text" id="temp-range">-° / -°</p>
+                  <p class="mb-0 small small-text" id="feels-like">Feels like -°</p>
+                </div>
+                <img src="assets/icons/clear-day.svg" class="img-fluid" id="weather-icon" alt="Weather Icon" style="max-width: 140px;">
+              </div>
+            </div>
+          </div>
+
+          <div class="">
+            <div class="card">
+              <div class="card-header">
+                Hourly Forecast
+              </div>
+              <div class="card-body">
+                <div class="d-flex overflow-auto" id="hourly-forecast">
+                  <!-- Example hourly forecast item -->
+                  <div class="card text-center me-2 border-0 shadow-sm" style="width: 5rem; min-width: 5rem;">
+                    <div class="card-body p-2">
+                      <p class="text-muted small mb-1">--:--</p>
+                      <img src="assets/icons/static/clear-day.svg" class="img-fluid mb-2" alt="Weather Icon" style="max-width: 40px;">
+                      <p class="fw-bold mb-0">-°</p>
+                    </div>
+                  </div>
+                  <div class="card text-center me-2 border-0 shadow-sm" style="width: 5rem; min-width: 5rem;">
+                    <div class="card-body p-2">
+                      <p class="text-muted small mb-1">--:--</p>
+                      <img src="assets/icons/static/clear-day.svg" class="img-fluid mb-2" alt="Weather Icon" style="max-width: 40px;">
+                      <p class="fw-bold mb-0">-°</p>
+                    </div>
+                  </div>
+                  <div class="card text-center me-2 border-0 shadow-sm" style="width: 5rem; min-width: 5rem;">
+                    <div class="card-body p-2">
+                      <p class="text-muted small mb-1">--:--</p>
+                      <img src="assets/icons/static/clear-day.svg" class="img-fluid mb-2" alt="Weather Icon" style="max-width: 40px;">
+                      <p class="fw-bold mb-0">-°</p>
+                    </div>
+                  </div>
+                  <div class="card text-center me-2 border-0 shadow-sm" style="width: 5rem; min-width: 5rem;">
+                    <div class="card-body p-2">
+                      <p class="text-muted small mb-1">--:--</p>
+                      <img src="assets/icons/static/clear-day.svg" class="img-fluid mb-2" alt="Weather Icon" style="max-width: 40px;">
+                      <p class="fw-bold mb-0">-°</p>
+                    </div>
+                  </div>
+                  <div class="card text-center me-2 border-0 shadow-sm" style="width: 5rem; min-width: 5rem;">
+                    <div class="card-body p-2">
+                      <p class="text-muted small mb-1">--:--</p>
+                      <img src="assets/icons/static/clear-day.svg" class="img-fluid mb-2" alt="Weather Icon" style="max-width: 40px;">
+                      <p class="fw-bold mb-0">-°</p>
+                    </div>
+                  </div>
+                  <div class="card text-center me-2 border-0 shadow-sm" style="width: 5rem; min-width: 5rem;">
+                    <div class="card-body p-2">
+                      <p class="text-muted small mb-1">--:--</p>
+                      <img src="assets/icons/static/clear-day.svg" class="img-fluid mb-2" alt="Weather Icon" style="max-width: 40px;">
+                      <p class="fw-bold mb-0">-°</p>
+                    </div>
+                  </div>
+                  <div class="card text-center me-2 border-0 shadow-sm" style="width: 5rem; min-width: 5rem;">
+                    <div class="card-body p-2">
+                      <p class="text-muted small mb-1">--:--</p>
+                      <img src="assets/icons/static/clear-day.svg" class="img-fluid mb-2" alt="Weather Icon" style="max-width: 40px;">
+                      <p class="fw-bold mb-0">-°</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-0 g-3 align-items-stretch">
+          <div class="col-6 col-sm-4">
+            <div class="card h-100">
+              <div class="card-header">
+                <h5 class="mb-0 text-small">Air Quality</h5>
+              </div>
+              <div class="card-body">
+                <div class="text-center mb-3">
+                  <h1 id="aqi-value" class="display-4">-</h1>
+                  <p id="aqi-description" class="mb-1 text-info fw-bold">Loading...</p>
+                </div>
+                <div class="progress mb-2" style="height: 20px;">
+                  <div id="aqi-bar" class="progress-bar bg-info" role="progressbar" style="width: 100%;" aria-valuenow="4" aria-valuemin="1" aria-valuemax="5">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4">
+            <div class="card h-100">
+              <div class="card-header">
+                <h5 class="mb-0 text-small">Humidity</h5>
+              </div>
+              <div class="card-body">
+                <div class="text-center mb-3">
+                  <h1 id="humidity-value" class="display-4">-</h1>
+                  <p id="humidity-description" class="mb-1 text-info fw-bold">Loading...</p>
+                </div>
+                <div class="progress mb-2" style="height: 20px;">
+                  <div id="humidity-bar" class="progress-bar bg-info" role="progressbar" style="width: 100%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-4">
+            <div class="card h-100">
+              <div class="card-header">
+                <h5 class="mb-0 text-small">UV Index</h5>
+              </div>
+              <div class="card-body">
+                <div class="text-center mb-3">
+                  <h1 id="uv-index-value" class="display-4">-</h1>
+                  <p id="uv-index-description" class="mb-1 text-info fw-bold">Loading...</p>
+                </div>
+                <div class="progress mb-2" style="height: 20px;">
+                  <div id="uv-index-bar" class="progress-bar bg-info" role="progressbar" style="width: 100%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="11"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div class="container col-md-4">
+
+<button
+class="btn btn-primary ai-bubble-toggle d-md-none"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#aiOverviewCollapse"
+aria-expanded="false"
+aria-controls="aiOverviewCollapse"
+>
+AI
+</button>
+
+<div class="collapse ai-overview-collapse" id="aiOverviewCollapse">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0 text-primary">AI Overview</h5>
+    </div>
+    <div class="card-body">
+      <p class="card-text ai-summary-text-mobile">
+        Loading...
+      </p>
+      <button class="btn btn-primary mt-0 generate-summary-btn-mobile">Ask AI!</button>
+    </div>
+  </div>
+</div>
+          <div id="AI" class="AI mt-md-0 mt-3 d-none d-md-block">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="mb-0 text-primary">AI Overview</h5>
+              </div>
+              <div class="card-body">
+                <p class="card-text ai-summary-text-desktop" id="ai-summary-text">
+                  Loading...
+                </p>
+                <button class="btn btn-primary mt-0 generate-summary-btn-desktop" id="generate-summary-btn">Ask AI!</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-dark">
+    <div class="container-fluid mt-3 bg-dark pt-5 text-light text-opacity-75">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 mb-4">
+            <h3 class="mb-3">Samsa Weather</h3>
+            <p>Samsa weather is an AI app which shows the weather by searching. Also gives an unique AI suggestion.
+            </p>
+          </div>
+          <div class="col-md-4 mb-4 px-lg-5">
+            <h3 class="mb-3">Quick Links</h3>
+            <ul class="navbar-nav mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Today</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Hourly</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h3 class="mb-3">Contact</h3>
+            <p><i class="bi-envelope me-2"></i><a class="text-decoration-none text-opacity-75 text-light" href="mailto:yusufemirsamsa@gmail.com">yusufemirsamsa@gmail.com</a></p>
+            <p><i class="bi-geo-alt me-2"></i>İTÜ Ayazağa Kampüsü Maslak, 34485 Sarıyer/İstanbul
+            </p>
+            <p><i class="bi-github me-2"></i><a class="text-opacity-75 text-light text-decoration-none" href="https://github.com/riprayt/ai_samsa_weather">Check this repo</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid py-3 pt-4 bg-dark text-light text-opacity-75">
+      <div class="container text-center">
+        <hr>
+        <span class="text-light text-opacity-75">© Samsa Weather</span>
+      </div>
+    </div>
+  </footer>
+
+<div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title" id="errorModalLabel">An Error Occured</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p id="errorModalMessage">An Error Occured</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  <script type = "module" src="assets/js/weatherAI.js"></script>
+  <script type= "module" src="assets/js/script.js"></script>
+</body>
+
+</html>

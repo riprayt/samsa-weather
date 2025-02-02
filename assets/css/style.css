@@ -1,0 +1,143 @@
+:root {
+    --primary-color: #2196F3;  /* Sky Blue */
+    --secondary-color: #001646;  /* Warm Yellow */
+    --background-color: #E3F2FD;  /* Light Blue */
+    --card-bg: #FFFFFF;  /* White */
+    --text-color: #212121;  /* Dark Gray */
+    --accent-color: #FF5722;  /* Warm Orange */
+}
+
+.bg-primary-weather { background-color: var(--primary-color); }
+.bg-secondary-weather { background-color: var(--secondary-color); }
+.bg-light-weather { background-color: var(--background-color); }
+.bg-card-weather { background-color: var(--card-bg) !important; }
+.bg-accent-weather { background-color: var(--accent-color); }
+
+.text-primary-weather { color: var(--primary-color); }
+.text-secondary-weather { color: var(--secondary-color); }
+.text-dark-weather { color: var(--text-color); }
+.text-accent-weather { color: var(--accent-color); }
+
+
+
+
+/* Global Styles */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Arial', sans-serif;
+    transition: height 0.8s ease-out;
+}
+
+
+
+
+.navbar-brand {
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+
+
+
+/* Weather Cards */
+.weather-card {
+    background-color: var(--card-bg);
+    text-align: center;
+}
+
+/* Highlight Text */
+.highlight {
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+.card {
+    transition: transform 0.2s ease-in-out;
+    font-size: 18px;
+}
+
+
+
+.city-link {
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .city-link.active {
+    text-decoration: underline;
+  }
+
+
+  .separator {
+    font-size: 1.2rem; /* Slightly larger for better visibility */
+    font-weight: normal; /* Normal weight for better readability */
+    color: #6c757d; /* Neutral gray color */
+    vertical-align: middle; /* Align to text middle */
+    line-height: 1; /* Ensure proper alignment */
+    display: flex; /* Ensure proper alignment with flexbox */
+    align-items: center;
+  }
+
+  .city-navbar {
+    padding: 0.1rem 0; /* Reduce overall padding */
+  }
+  
+
+  @keyframes blinkText {
+    to { opacity: 0; }
+  }
+  
+  .loading-text {
+    animation: blinkText 1s ease-in-out infinite alternate;
+  }
+
+
+#AI {
+    overflow: hidden;
+    transition: height 0.8s ease-out; /* Smooth expansion effect */
+}
+
+
+
+/* Text fade-in effect when AI response appears */
+.fade-in {
+    opacity: 0;
+    transition: opacity 1s ease-in;
+}
+.fade-in.show {
+    opacity: 1;
+}
+
+
+
+/* Position the bubble button in the bottom-right corner */
+.ai-bubble-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    /* Optional styling */
+    font-size: 1.25rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  }
+  
+  /* Style the collapse area so it can appear as a “flyout” or panel */
+  .ai-overview-collapse {
+    position: fixed;
+    bottom: 90px; /* just above the bubble button */
+    right: 20px;
+    width: 300px;  /* adjust as needed */
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 9999;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  
+  .ai-overview-collapse .card {
+    margin: 0;
+  }
+  
