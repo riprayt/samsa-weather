@@ -252,8 +252,25 @@ window.addEventListener("load", async () => {
   }
 });
 
+document.getElementById("search-btn").addEventListener("click", function () {
+  const city = document.getElementById("city-input").value.trim() || "Istanbul";
 
-let lastAISummary = `Yapay zeka önerisi oluşturulmadı. Oluşturmak için butona dokun...`;
+  updateData(city);
+});
+document.getElementById("city-input").addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
+      const city = document.getElementById("city-input").value.trim() || "Istanbul";
+
+      updateData(city);
+  }
+});
+
+
+
+
+
+
+
 
 function getIconMapping() {
   return {
@@ -278,6 +295,8 @@ function getIconMapping() {
   };
 }
 
+
+let lastAISummary = `Yapay zeka önerisi oluşturulmadı. Oluşturmak için butona dokun...`;
 function assignIDs() {
   const desktopSummaryText = document.querySelector("#AI .card-body .ai-summary-text-desktop");
   const desktopGenerateBtn = document.querySelector("#AI .card-body .generate-summary-desktop");
