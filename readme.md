@@ -1,19 +1,57 @@
-<h1>Weather website with an AI suggestion.</h1>
+# Weather App with an AI Suggestion
+
+## Check It Live
+
+Visit the live demo at: [samsaw.vercel.app](https://samsaw.vercel.app)
+
+## App Features
+
+- **Live Weather Data**:  
+  Fetches real-time weather data from the OpenWeatherMap API for any city around the world.
+
+- **AI Suggestion**:  
+  Uses Google's "Gemini Flash 1.5" model via the OpenRouter API to provide AI-generated suggestions for clothing and umbrella recommendations based on the weather.
+
+- **Multilanguage Support**:  
+  Choose your preferred language using the navbar button (supports at least English and Turkish).
+
+- **Responsive Design**:  
+  Built with Bootstrap to ensure a sleek, responsive user interface on both desktop and mobile devices.
+
+## Technologies Used
+
+### Frontend
+- **Structure**: Used HTML and also Bootstrap classes for minimal CSS and a sleek look.
+- **Responsiveness**: Used Bootstrap classes to get responsive features like collapsing navbar and ordering divs.
+- **Modern Icons**: Used several 
+
+### Backend & Serverless Functions
+
+- **Node.js & Vercel Serverless Functions**:  
+  - API calls to OpenWeatherMap and OpenRouter are handled by serverless functions (found in the `api/` directory) to securely hide API keys.
+  - The frontend fetches weather data from `/api/weather` and AI suggestions from `/api/getWeatherSuggestion` without exposing sensitive credentials.
+  
+- **Secure API Integration**:  
+  - Environment variables (set via Vercel or a local `.env` file) store the API keys, ensuring they remain secret.
+  - Custom endpoints in the `api/` folder (e.g., `weather.js`, `geo.js`, `uv.js`, `air-quality.js`, `forecast.js`, and `getWeatherSuggestion.js`) securely proxy requests to external services.
+
+- **AI Overview Generation**:  
+  - The `/api/getWeatherSuggestion.js` endpoint first generates clothing and umbrella recommendations through a custom algorithm.
+  - These suggestions, along with the weather data, are sent to the AI model with a custom system prompt to generate the final overview.
 
 
-#StratchWork###########
-PseudoCode
+## Environment Variables
 
-Structure
--responsive design
--modern look
--multilanguage support(english and turkish)
+This project uses environment variables to securely manage API keys. Make sure to set the following in your deployment settings (or local `.env` file):
 
-Features
--shows my campus and home weather by default
--says what to wear according to the weather (maybe with an ai API)
--lets me navigate through popular cities 
+- **OW_API_KEY**: Your OpenWeatherMap API key.
+- **OR_API_KEY**: Your OpenRouter API key for AI suggestions.
 
-#StratchWork###########
+## License 
+
+This project is licensed under the [GPL-3.0 license](https://github.com/riprayt/samsa-weather?tab=GPL-3.0-1-ov-file#)
+
+## Contact
+- **Email**: yusufemirsamsa@gmail.com
 
 

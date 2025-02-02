@@ -6,7 +6,6 @@ function showErrorModal(errorMessage) {
   errorModal.show();
 }
 
-
 async function fetchWeather(city) {
   const response = await fetch(`/api/weather?city=${encodeURIComponent(city)}&lang=tr`);
   if (!response.ok) {
@@ -15,7 +14,6 @@ async function fetchWeather(city) {
   }
 
   const data = await response.json();
-
 
   const weatherIcon = document.getElementById("weather-icon");
   const iconMapping = {
@@ -265,13 +263,6 @@ document.getElementById("city-input").addEventListener("keypress", function (eve
   }
 });
 
-
-
-
-
-
-
-
 function getIconMapping() {
   return {
     "01d": "clear-day.svg",
@@ -294,7 +285,6 @@ function getIconMapping() {
     "50n": "mist.svg",
   };
 }
-
 
 let lastAISummary = `Yapay zeka önerisi oluşturulmadı. Oluşturmak için butona dokun...`;
 function assignIDs() {
@@ -404,5 +394,3 @@ cityLinks.forEach((link) => {
     updateData(city);
   });
 });
-
-

@@ -1,12 +1,9 @@
 
-import { getWeatherSuggestion } from "./weatherAI.js"; // ✅ Ensure correct path
+import { getWeatherSuggestion } from "./weatherAI.js"; 
 
 
 function showErrorModal(errorMessage) {
-    // Set the error message inside the modal
     document.getElementById("errorModalMessage").textContent = errorMessage;
-  
-    // Show the Bootstrap modal
     const errorModal = new bootstrap.Modal(document.getElementById("errorModal"));
     errorModal.show();
   }
@@ -20,7 +17,6 @@ async function fetchWeather(city) {
 
   const data = await response.json();
 
-  // (Keep your existing code for processing and displaying weather data.)
   const weatherIcon = document.getElementById("weather-icon");
 
   const iconMapping = {
@@ -101,7 +97,6 @@ async function fetchCoordinates(city) {
   }
   return { lat: data[0].lat, lon: data[0].lon };
 }
-
 
 async function fetchUVIndex(lat, lon) {
   const response = await fetch(`/api/uv?lat=${lat}&lon=${lon}`);
@@ -187,7 +182,6 @@ async function fetchAirQuality(city) {
     fetchUVIndex(lat, lon);
   }
   
-
 document.getElementById("search-btn").addEventListener("click", function () {
     const city = document.getElementById("city-input").value.trim() || "Istanbul";
 
@@ -200,7 +194,6 @@ document.getElementById("city-input").addEventListener("keypress", function (eve
         updateData(city);
     }
 });
-
 
 function getIconMapping() {
     return {
@@ -299,7 +292,6 @@ async function generateHourlyForecast(city) {
     });
 }
 
-
 async function updateData(city){
     const weatherData = await fetchWeather(city);
     if (!weatherData) return;
@@ -307,8 +299,6 @@ async function updateData(city){
     fetchAirQuality(city);
     generateHourlyForecast(city);
 }
-
-
 
 window.addEventListener("load", async () => {
   try {
@@ -329,8 +319,6 @@ window.addEventListener("load", async () => {
     updateData("Istanbul"); // Default to Istanbul on failure
   }
 });
-
-
 
 let lastAISummary = `No summary generated. Tap the button to generate one...`; // Store last AI summary for re-assignment
 function assignIDs() {
@@ -364,7 +352,7 @@ function assignIDs() {
     }
   }
   
-  // 2) Attach the click listener to whichever element ends up with the "generate-summary-btn" ID.
+  // Attach the click listener to whichever element ends up with the "generate-summary-btn" ID.
   async function attachGenerateListener() {
     const generateBtn = document.getElementById("generate-summary-btn");
     if (!generateBtn) return; // If desktop or mobile doesn't exist in this view
@@ -392,7 +380,6 @@ function assignIDs() {
         return;
       }
   
-      // The container (on desktop, #AI; on mobile, it might differ if you adapted code)
       const aiContainer = document.getElementById("AI");
       const summaryText = document.getElementById("ai-summary-text");
       if (!aiContainer || !summaryText) {
@@ -400,29 +387,24 @@ function assignIDs() {
         return;
       }
   
-      // Store initial height for expansion
       const initialHeight = aiContainer.offsetHeight;
-      summaryText.textContent = `Thinking for ${city}...`; // Show loading
+      summaryText.textContent = `Thinking for ${city}...`; 
       summaryText.classList.add("loading-text");
   
       try {
         const aiSummary = await getWeatherSuggestion(weatherData);
-  
-        // Stop blinking
+        
+        // Animate the expansion
         summaryText.classList.remove("loading-text");
-        // Fade in
         summaryText.classList.add("fade-in");
         summaryText.textContent = aiSummary;
-  
-        // Smoothly expand
         aiContainer.style.height = "auto";
         const newHeight = aiContainer.scrollHeight + "px";
         aiContainer.style.height = initialHeight + "px";
         setTimeout(() => {
           aiContainer.style.height = newHeight;
         }, 20);
-  
-        // Appear
+
         setTimeout(() => {
           summaryText.classList.add("show");
           lastAISummary = summaryText.textContent;
@@ -439,22 +421,17 @@ function assignIDs() {
     });
   }
   
-  
-
-
-  
-  // 3) Run everything on DOMContentLoaded.
+  // Run everything on DOMContentLoaded.
   document.addEventListener("DOMContentLoaded", () => {
     assignIDs();            // Assign the correct IDs based on screen width
     attachGenerateListener(); // Attach the event to whichever button now has that ID
   });
   
-  // 4) (Optional) If you want to reassign on window resize:
   window.addEventListener("resize", () => {
     assignIDs();            // Reassign IDs if crossing the breakpoint
     attachGenerateListener(); // Reattach events to the newly assigned button
-    // 3) If we already had an AI summary, apply it to the new #ai-summary-text
-   // If now in desktop view (≥ 768px), force close the mobile collapse
+    // If we already had an AI summary, apply it to the new #ai-summary-text
+   // If now in desktop view (>= 768px), force close the mobile collapse
    document.getElementById("ai-summary-text").textContent = lastAISummary;
    if (window.innerWidth >= 768) {
     const mobileCollapseEl = document.getElementById("aiOverviewCollapse");
@@ -498,20 +475,8 @@ function assignIDs() {
         // Get the city name from the data attribute
         const city = link.getAttribute("data-city");
 
-
         // Update the weather data for the selected city
         updateData(city);
 
-
- 
       });
     });
-   
-
-
-
- 
-document.getElementById("generate-summary-btn").addEventListener("click", async function () {
-
-
-});

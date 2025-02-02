@@ -1,5 +1,3 @@
-// api/uv.js
-
 export default async function handler(req, res) {
     const { lat, lon } = req.query;
     if (!lat || !lon) {
